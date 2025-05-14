@@ -1,9 +1,9 @@
+import * as model from './js/model.js';
 import icons from 'url:/src/img/icons.svg';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 const recipeContainer = document.querySelector('.recipe');
-
 const timeout = function (s) {
   return new Promise(function (_, reject) {
     setTimeout(function () {
@@ -35,30 +35,9 @@ const showRecipe = async function () {
   try {
     if (!id) return;
 
-    // 1) Loading Recipe
     renderSipnner(recipeContainer);
-    const res = await fetch(
-      `https://forkify-api.jonas.io/api/v2/recipes/${id}`
-    );
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      throw new Error(`${data.message} (${res.status})`);
-    }
-
-    let { recipe } = data.data;
-
-    recipe = {
-      id: recipe.id,
-      title: recipe.title,
-      publisher: recipe.publisher,
-      sourceURL: recipe.source_url,
-      image: recipe.image_url,
-      servings: recipe.servings,
-      cookingTime: recipe.cooking_time,
-      ingredients: recipe.ingredients,
-    };
+    // 1) Loading Recipe
+    await model.loadRecipe(id);
 
     console.log(recipe);
     // 2) Rendering recipe
