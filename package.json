@@ -4,13 +4,13 @@
   "description": "Recipe Application",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "Edgar C S Ribeiro",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.13.2",
-    "parcel": "^2.13.2",
+    "@parcel/transformer-sass": "^2.15.0",
+    "parcel": "^2.15.0",
     "svgo": "^3.0.5"
   },
   "dependencies": {
